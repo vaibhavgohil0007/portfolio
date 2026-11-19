@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FROSTALLION — aka frostyy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<div class="player-card">
+ 
+<!-- FROSTY ULTRA PLAYER CARD V2 -->
+
+<style>
+#frostyUltra, #frostyUltra * {
+    box-sizing: border-box;
+}
+
+#frostyUltra {
+    --cyan: #39d9ff;
+    --blue: #087bff;
+
+    position: fixed;
+    right: 35px;
+    top: 50%;
+    width: 290px;
+    padding: 2px;
+    border-radius: 17px;
+    z-index: 9999;
+
+    background: conic-gradient(
+        from var(--angle, 0deg),
+        #061522,
+        #30d9ff,
+        #0754a0,
+        #071321,
+        #30d9ff,
+        #061522
+    );
+
+    animation: frostBorder 5s linear infinite;
+
+    transform: translateY(-50%);
+    transition: filter .4s ease;
+    perspective: 1000px;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes frostBorder {
+    to { --angle: 360deg; }
+}
+
+#frostyUltra .fu-inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    padding: 13px;
+    color: #e6f8ff;
+    background:
+        radial-gradient(ellipse at 90% 0%, #073c57 0%, transparent 45%),
+        linear-gradient(145deg, #07121e, #03070d 75%);
+    transform-style: preserve-3d;
+    transition: box-shadow .35s ease;
+}
+
+#frostyUltra:hover .fu-inner {
+    box-shadow: inset 0 0 35px #05bfff15,
+                0 0 25px #16caff35;
+}
+
+/* SCANLINE */
+#frostyUltra .fu-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background: linear-gradient(
+        transparent 48%,
+        #52ddff09 50%,
+        transparent 52%
+    );
+    background-size: 100% 7px;
+    opacity: .6;
+}
+
+/* MOVING LIGHT */
+#frostyUltra .fu-inner::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    left: 0;
+    top: -100px;
+    background: linear-gradient(
+        transparent,
+        #32d8ff12,
+        transparent
+    );
+    animation: fuScan 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fuScan {
+    to { top: 120%; }
+}
+
+/* HEADER */
+#frostyUltra .fu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 6;
+    margin-bottom: 12px;
+}
+
+#frostyUltra .fu-brand {
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px #39d9ff;
+}
+
+#frostyUltra .fu-country {
+    font-size: 17px;
+}
+
+/* PROFILE */
+#frostyUltra .fu-profile {
+    height: 175px;
+    border: 1px solid #1d536c;
+    border-radius: 11px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center, #07547755, transparent 65%),
+        #030b13;
+}
+
+#frostyUltra .fu-profile::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px dashed #39d9ff55;
+    border-radius: 50%;
+    animation: fuRotate 18s linear infinite;
+}
+
+#frostyUltra .fu-profile::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #39d9ff40;
+    border-radius: 50%;
+    box-shadow: 0 0 22px #39d9ff25;
+    animation: fuRotate 10s linear infinite reverse;
+}
+
+@keyframes fuRotate {
+    to { transform: rotate(360deg); }
+}
+
+#frostyUltra .fu-avatar {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    border: 3px solid #48dfff;
+    box-shadow:
+        0 0 12px #20caff,
+        0 0 35px #20caff70;
+    transition: transform .4s ease;
+}
+
+#frostyUltra:hover .fu-avatar {
+    transform: scale(1.07);
+}
+
+/* PARTICLES */
+#frostyUltra .fu-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#frostyUltra .fu-particle {
+    position: absolute;
+    bottom: -8px;
+    width: 3px;
+    height: 3px;
+    background: #56e2ff;
+    border-radius: 50%;
+    box-shadow: 0 0 9px #39d9ff;
+    animation: fuFloat 6s linear infinite;
+}
+
+@keyframes fuFloat {
+    0% {
+        transform: translateY(0) scale(.5);
+        opacity: 0;
+    }
+    20% { opacity: 1; }
+    100% {
+        transform: translateY(-190px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* UPLOAD */
+#frostyUltra .fu-upload {
+    display: block;
+    margin: 9px 0;
+    padding: 9px;
+    text-align: center;
+    color: #62dcff;
+    background: #0b2537;
+    border: 1px solid #15506c;
+    border-radius: 6px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#frostyUltra .fu-upload:hover {
+    background: #103a52;
+    box-shadow: 0 0 15px #16caff55;
+}
+
+#frostyUltra .fu-upload input {
+    display: none;
+}
+
+/* ROLE */
+#frostyUltra .fu-role {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0b1d2b;
+    border: 1px solid #163c51;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 9px;
+}
+
+#frostyUltra .fu-online {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #62eeb2;
+}
+
+#frostyUltra .fu-dot {
+    width: 8px;
+    height: 8px;
+    background: #43f3a5;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #43f3a5;
+    animation: fuPulse 1.5s infinite;
+}
+
+@keyframes fuPulse {
+    50% { opacity: .4; }
+}
+
+/* ABOUT */
+#frostyUltra .fu-about {
+    background: #081723;
+    border: 1px solid #163b51;
+    border-radius: 6px;
+    padding: 12px;
+    transition: .3s;
+}
+
+#frostyUltra .fu-about:hover {
+    border-color: #39d9ff;
+    box-shadow: 0 0 13px #16caff20;
+}
+
+#frostyUltra .fu-title {
+    color: #50dfff;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+    font-weight: bold;
+}
+
+#frostyUltra .fu-about p {
+    color: #b9cedb;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* ID */
+#frostyUltra .fu-id {
+    color: #7194a9;
+    font-size: 9px;
+    padding: 12px 3px;
+    letter-spacing: 1px;
+}
+
+/* LINKS */
+#frostyUltra .fu-links {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 11px;
+    border-top: 1px solid #183b50;
+}
+
+#frostyUltra .fu-links a {
+    font-size: 9px;
+    color: #6bdfff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+#frostyUltra .fu-links a:hover {
+    color: white;
+    text-shadow: 0 0 12px #39d9ff;
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+#frostyUltra .fu-footer {
+    text-align: center;
+    font-size: 8px;
+    color: #42677e;
+    letter-spacing: 3px;
+    margin-top: 13px;
+}
+
+/* MOBILE */
+@media(max-width: 900px) {
+    #frostyUltra {
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        margin: 35px auto;
+        width: min(290px, 90%);
+    }
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion: reduce) {
+    #frostyUltra *,
+    #frostyUltra::before,
+    #frostyUltra::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+
+<div id="frostyUltra">
+ <div class="fu-inner">
+
+    <div class="fu-particles" id="fuParticles"></div>
+
+    <div class="fu-header">
+        <span class="fu-brand" contenteditable="true">
+            DISCORD PROFILE 
+        </span>
+        <span class="fu-country">🇮🇳</span>
+    </div>
+
+    <div class="fu-profile">
+        <img class="fu-avatar"
+        id="fuAvatar"
+        src="https://media.discordapp.net/attachments/1456673781320782067/1569749601823629402/download_11.jpg?ex=6affcb7d&is=6afe79fd&hm=7ef59f5030b0f001aa63ae5bfba2dca5f0c9f1a17469f1b58246186637a834b0&format=webp"
+        alt="Profile picture">
+    </div>
+
+    <label class="fu-upload">
+        <a href="https://discord.com/users/1151404603544436827"> @frosty_where</a>
+        <col=white>
+    </label>
+
+    <div class="fu-role">
+        <span contenteditable="true">GAMER & DESIGNER</span>
+        <span class="fu-online">
+            <span class="fu-dot"></span>
+            ONLINE
+        </span>
+    </div>
+
+    <div class="fu-about">
+        <div class="fu-title">✦ ABOUT ME</div>
+        <p contenteditable="true">
+            Welcome to my profile! Gaming enthusiast,
+            creative designer and explorer of digital
+            worlds. Always creating something new.
+        </p>
+    </div>
+
+    <div class="fu-id">
+        DISCORD ID:
+        <span contenteditable="true">
+            1151404603544436827
+        </span>
+    </div>
+
+    <div class="fu-links">
+        <a href="#games">GAMES ↗</a>
+
+        <a href="#contact">CONTACT ↗</a>
+    </div>
+
+    <div class="fu-footer">
+        FROSTY SYSTEM // ONLINE
+    </div>
+
+ </div>
+</div>
+
+<script>
+(() => {
+    const card = document.getElementById("frostyUltra");
+    const inner = card.querySelector(".fu-inner");
+    const avatar = document.getElementById("fuAvatar");
+    const upload = document.getElementById("fuUpload");
+    const particles = document.getElementById("fuParticles");
+
+    // AVATAR UPLOAD
+    let currentURL = null;
+
+    upload.addEventListener("change", e => {
+        const file = e.target.files[0];
+
+        if (!file || !file.type.startsWith("image/")) return;
+
+        if (currentURL) URL.revokeObjectURL(currentURL);
+
+        currentURL = URL.createObjectURL(file);
+        avatar.src = currentURL;
+    });
+
+    // FLOATING PARTICLES
+    for (let i = 0; i < 24; i++) {
+        const particle = document.createElement("span");
+        particle.className = "fu-particle";
+
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.animationDelay = Math.random() * 6 + "s";
+        particle.style.animationDuration =
+            (4 + Math.random() * 5) + "s";
+
+        particles.appendChild(particle);
+    }
+
+    // 3D MOUSE TILT
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+        card.addEventListener("mousemove", e => {
+            const rect = card.getBoundingClientRect();
+
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+
+            const rotateY = (x - 0.5) * 9;
+            const rotateX = (0.5 - y) * 9;
+
+            inner.style.transform =
+                `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+            inner.style.boxShadow =
+                `${(x - .5) * 18}px ${(y - .5) * 18}px 35px #19bfff22`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            inner.style.transform = "rotateX(0) rotateY(0)";
+            inner.style.boxShadow = "";
+        });
+    }
+})();
+</script>
+
+<!-- END FROSTY ULTRA CARD -->
+
+<style>
+/* ============ BASE ============ */
+:root{
+  --bg:#05070e;
+  --ice:#6fe3ff;
+  --ice2:#2ec5ff;
+  --frost:#d9f6ff;
+  --blood:#ff2e63;
+  --muted:#7d8aa5;
+  --line:rgba(111,227,255,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+/* FIX: Scroll padding for the fixed nav */
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top: 100px; /* Pushes the section down so the header doesn't cover it */
+}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:
+    radial-gradient(1000px 600px at 80% -10%, rgba(46,197,255,.16), transparent 60%),
+    radial-gradient(900px 600px at 5% 105%, rgba(255,46,99,.10), transparent 60%),
+    var(--bg);
+  color:var(--frost);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+::selection{background:rgba(111,227,255,.35); color:#fff;}
+
+/* scrollbar */
+::-webkit-scrollbar{width:9px;}
+::-webkit-scrollbar-track{background:#05070e;}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,var(--ice2),var(--ice));
+  border-radius:99px;
+}
+
+/* ============ LAYERS ============ */
+#bg{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+}
+.glow{
+  position:fixed; top:0; left:0; width:600px; height:600px;
+  margin:-300px 0 0 -300px; border-radius:50%;
+  background:radial-gradient(circle, rgba(111,227,255,.5), rgba(111,227,255,0) 65%);
+  mix-blend-mode:screen; opacity:.10; pointer-events:none; z-index:1;
+  will-change:transform;
+}
+.grain{
+  position:fixed; inset:0; z-index:9997; pointer-events:none; opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.progress{
+  position:fixed; top:0; left:0; height:2px; width:0%; z-index:9999;
+  background:linear-gradient(90deg,var(--blood),var(--ice));
+  box-shadow:0 0 14px var(--ice);
+}
+
+/* ============ CUSTOM CURSOR (GAMING RETICLE) ============ */
+.cursor-dot,.cursor-reticle{
+  position:fixed; top:0; left:0; pointer-events:none; z-index:10000; will-change:transform;
+}
+
+/* The center dot */
+.cursor-dot{
+  width:4px; height:4px; background:var(--ice); border-radius:50%;
+  box-shadow:0 0 10px var(--ice), 0 0 20px var(--ice2);
+  transition: background .2s, transform .2s;
+}
+
+/* The crosshair lines */
+.cursor-reticle{
+  width:40px; height:40px;
+  transition: transform .15s ease-out;
+}
+.cursor-reticle svg {
+  width: 100%; height: 100%;
+  color: var(--ice);
+  filter: drop-shadow(0 0 6px rgba(111,227,255,.8));
+  transition: color .2s ease, transform .2s ease, filter .2s ease;
+}
+
+/* Hover State: Locks onto target (turns red, spins slightly, zooms in) */
+.cursor-reticle.hover svg {
+  color: var(--blood);
+  filter: drop-shadow(0 0 8px var(--blood));
+  transform: scale(0.8) rotate(45deg);
+}
+.cursor-dot.hover {
+  background: var(--blood);
+  box-shadow: 0 0 10px var(--blood);
+  transform: scale(1.5);
+}
+
+.spark{
+  position:fixed; border-radius:50%; background:var(--ice);
+  pointer-events:none; z-index:9999; transform:translate(-50%,-50%);
+  box-shadow:0 0 8px var(--ice);
+  animation:sparkFade .7s ease-out forwards;
+}
+@keyframes sparkFade{ to{ opacity:0; transform:translate(-50%,-50%) scale(.1);} }
+
+@media (pointer:fine){
+  body,a,button,.tilt,.magnetic{cursor:none;}
+}
+@media (pointer:coarse){
+  .cursor-dot,.cursor-reticle,.glow{display:none;}
+}
+
+/* ============ LOADER ============ */
+#loader{
+  position:fixed; inset:0; z-index:10001; background:#04060c;
+  display:grid; place-items:center; transition:opacity .8s ease, visibility .8s;
+}
+#loader.done{opacity:0; visibility:hidden;}
+.loader-name{
+  font-family:'Chakra Petch',sans-serif; font-weight:700;
+  letter-spacing:.4em; font-size:clamp(.9rem,3vw,1.3rem);
+  color:var(--ice); text-shadow:0 0 24px rgba(111,227,255,.8);
+  margin-bottom:22px; text-align:center;
+  animation:flick 2.2s infinite;
+}
+@keyframes flick{0%,100%{opacity:1;} 47%{opacity:.35;} 49%{opacity:1;} 72%{opacity:.6;}}
+.loader-bar{width:220px; height:2px; background:rgba(111,227,255,.15); overflow:hidden;}
+.loader-bar i{
+  display:block; height:100%; width:0;
+  background:linear-gradient(90deg,var(--ice2),var(--ice));
+  box-shadow:0 0 12px var(--ice);
+  animation:loadFill 1.4s cubic-bezier(.6,0,.2,1) forwards;
+}
+@keyframes loadFill{to{width:100%;}}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:9000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px clamp(18px,5vw,60px);
+  transition:background .4s ease, backdrop-filter .4s ease, padding .4s ease;
+}
+.nav.scrolled{
+  background:rgba(4,6,12,.72);
+  backdrop-filter:blur(14px);
+  padding:14px clamp(18px,5vw,60px);
+  border-bottom:1px solid var(--line);
+}
+.logo{
+  font-family:'Chakra Petch',sans-serif; font-weight:700; letter-spacing:.22em;
+  font-size:.95rem; color:var(--frost); text-decoration:none;
+}
+.logo span{color:var(--ice); text-shadow:0 0 14px var(--ice);}
+.nav nav{display:flex; gap:clamp(14px,2.5vw,34px);}
+.nav nav a{
+  color:var(--muted); text-decoration:none; font-size:.82rem;
+  letter-spacing:.16em; text-transform:uppercase; position:relative;
+  transition:color .3s ease;
+}
+.nav nav a::after{
+  content:''; position:absolute; left:0; bottom:-6px; height:1px; width:0;
+  background:var(--ice); box-shadow:0 0 8px var(--ice); transition:width .35s ease;
+}
+.nav nav a:hover{color:var(--frost);}
+.nav nav a:hover::after{width:100%;}
+
+/* ============ REVEAL ============ */
+.reveal{
+  opacity:0; transform:translateY(30px);
+  transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+  transition-delay:var(--d,0s);
+}
+.reveal.in{opacity:1; transform:none;}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative; z-index:2;
+  min-height:100vh; display:grid; place-items:center;
+  padding:120px 22px 90px; text-align:center;
+}
+.eyebrow{
+  font-size:.72rem; letter-spacing:.5em; color:var(--ice);
+  text-transform:uppercase; margin-bottom:22px; opacity:.85;
+  text-shadow:0 0 20px rgba(111,227,255,.6);
+}
+.glitch{
+  position:relative; display:inline-block;
+  font-family:'Chakra Petch',sans-serif; font-weight:700;
+  font-size:clamp(2.5rem,10vw,7.5rem); letter-spacing:.05em; line-height:.95;
+  color:transparent;
+  background:linear-gradient(180deg,#ffffff 0%,#bdeeff 45%,#4fc9ff 100%);
+  -webkit-background-clip:text; background-clip:text;
+  filter:drop-shadow(0 0 34px rgba(79,201,255,.35));
+}
+.glitch::before,.glitch::after{
+  content:attr(data-text); position:absolute; left:0; top:0; width:100%;
+  background:none; -webkit-background-clip:border-box; background-clip:border-box;
+  opacity:.75; pointer-events:none;
+}
+.glitch::before{ color:var(--ice); animation:gTop 5s infinite steps(2,end); }
+.glitch::after{ color:var(--blood); animation:gBot 4.2s infinite steps(2,end); }
+@keyframes gTop{
+  0%,88%,100%{transform:translate(0,0); clip-path:inset(0 0 100% 0);}
+  90%{transform:translate(-4px,-3px); clip-path:inset(0 0 62% 0);}
+  92%{transform:translate(3px,2px);  clip-path:inset(22% 0 55% 0);}
+  94%{transform:translate(-2px,1px); clip-path:inset(48% 0 30% 0);}
+  96%{transform:translate(4px,-2px); clip-path:inset(8% 0 78% 0);}
+}
+@keyframes gBot{
+  0%,84%,100%{transform:translate(0,0); clip-path:inset(100% 0 0 0);}
+  86%{transform:translate(4px,3px);  clip-path:inset(58% 0 0 0);}
+  88%{transform:translate(-3px,-2px);clip-path:inset(30% 0 0 0);}
+  90%{transform:translate(2px,1px);  clip-path:inset(74% 0 0 0);}
+  92%{transform:translate(-4px,2px); clip-path:inset(12% 0 0 0);}
+}
+.nick{
+  font-family:'Chakra Petch',sans-serif; letter-spacing:.42em;
+  font-size:clamp(.75rem,2vw,1rem); color:var(--muted);
+  margin-top:18px; text-transform:uppercase;
+}
+.nick span{color:var(--ice); text-shadow:0 0 18px rgba(111,227,255,.8);}
+.type-line{
+  margin-top:26px; font-size:clamp(.95rem,2.3vw,1.25rem);
+  color:var(--frost); min-height:1.7em; font-weight:300;
+}
+.caret{
+  display:inline-block; width:9px; height:1.05em; margin-left:3px;
+  background:var(--ice); vertical-align:-.16em;
+  box-shadow:0 0 12px var(--ice); animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+.hero-btns{
+  margin-top:46px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+}
+.btn{
+  position:relative; padding:15px 34px; border-radius:2px;
+  font-family:'Chakra Petch',sans-serif; font-size:.8rem; font-weight:600;
+  letter-spacing:.2em; text-transform:uppercase; text-decoration:none;
+  transition:transform .25s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
+  display:inline-block; will-change:transform;
+}
+.btn-primary{
+  color:#02121a; background:linear-gradient(135deg,var(--ice),var(--ice2));
+  box-shadow:0 0 26px rgba(111,227,255,.35);
+}
+.btn-primary:hover{box-shadow:0 0 46px rgba(111,227,255,.7);}
+.btn-ghost{
+  color:var(--frost); border:1px solid rgba(111,227,255,.35);
+  background:rgba(111,227,255,.04);
+}
+.btn-ghost:hover{
+  border-color:var(--ice); color:var(--ice);
+  box-shadow:0 0 30px rgba(111,227,255,.35), 0 0 30px rgba(111,227,255,.2) inset;
+}
+.scroll-hint{
+  position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+  font-size:.62rem; letter-spacing:.45em; color:var(--muted);
+  animation:floaty 2.4s ease-in-out infinite;
+}
+@keyframes floaty{0%,100%{transform:translate(-50%,0);opacity:.5;}50%{transform:translate(-50%,9px);opacity:1;}}
+
+/* ============ MARQUEE ============ */
+.marquee{
+  position:relative; z-index:2; overflow:hidden;
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  padding:16px 0; background:rgba(4,8,16,.45);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.marquee-track{
+  display:flex; gap:44px; width:max-content;
+  animation:scrollX 26s linear infinite;
+}
+.marquee-track span{
+  font-family:'Chakra Petch',sans-serif; font-size:.82rem; letter-spacing:.32em;
+  color:rgba(217,246,255,.5); white-space:nowrap;
+}
+.marquee-track span:nth-child(even){color:var(--ice); opacity:.65;}
+@keyframes scrollX{to{transform:translateX(-50%);}}
+
+/* ============ SECTIONS ============ */
+section.block{
+  position:relative; z-index:2;
+  max-width:1180px; margin:0 auto; padding:clamp(70px,10vw,130px) 24px;
+}
+.sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:52px;}
+.sec-num{
+  font-family:'Chakra Petch',sans-serif; font-size:.75rem; letter-spacing:.3em;
+  color:var(--blood); opacity:.9;
+}
+.sec-head h2{
+  font-family:'Chakra Petch',sans-serif; font-weight:700;
+  font-size:clamp(1.6rem,4.5vw,2.6rem); letter-spacing:.02em;
+  color:var(--frost);
+}
+.sec-head .rule{
+  flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent);
+}
+
+/* ABOUT */
+.about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:start;}
+.about-text p{color:var(--muted); line-height:1.9; margin-bottom:18px; font-weight:300; font-size:1.02rem;}
+.about-text p strong{color:var(--frost); font-weight:500;}
+.about-text p em{color:var(--ice); font-style:normal;}
+.stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.stat{
+  border:1px solid var(--line); padding:24px 20px; border-radius:3px;
+  background:linear-gradient(160deg, rgba(111,227,255,.05), transparent 70%);
+  position:relative; overflow:hidden;
+  transition:border-color .35s ease, transform .35s ease;
+}
+.stat:hover{border-color:rgba(111,227,255,.45); transform:translateY(-4px);}
+.stat::before{
+  content:''; position:absolute; top:0; left:0; width:100%; height:1px;
+  background:linear-gradient(90deg,transparent,var(--ice),transparent); opacity:.6;
+}
+.stat-num{
+  display:block; font-family:'Chakra Petch',sans-serif; font-weight:700;
+  font-size:clamp(1.6rem,4vw,2.2rem); color:var(--ice);
+  text-shadow:0 0 22px rgba(111,227,255,.55);
+}
+.stat-label{
+  display:block; margin-top:6px; font-size:.7rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--muted);
+}
+@media(max-width:860px){ .about-grid{grid-template-columns:1fr; gap:36px;} }
+
+/* GAME CARDS */
+.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+.tilt{
+  position:relative; border:1px solid var(--line); border-radius:4px;
+  padding:34px 26px 30px; overflow:hidden;
+  background:linear-gradient(165deg, rgba(12,20,34,.9), rgba(5,8,15,.9));
+  transform-style:preserve-3d; will-change:transform;
+  transition:transform .18s ease-out, border-color .4s ease, box-shadow .4s ease;
+}
+.tilt::after{
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:0;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%), rgba(111,227,255,.16), transparent 65%);
+  transition:opacity .35s ease;
+}
+.tilt:hover{border-color:rgba(111,227,255,.45); box-shadow:0 24px 60px -24px rgba(46,197,255,.5);}
+.tilt:hover::after{opacity:1;}
+.card-idx{
+  font-family:'Chakra Petch',sans-serif; font-size:.7rem; letter-spacing:.3em;
+  color:var(--muted); opacity:.7;
+}
+.card-icon{
+  width: 46px;
+  height: 46px;
+  margin: 18px 0 14px;
+  display: block;
+  color: var(--ice);
+  filter: drop-shadow(0 0 12px rgba(111,227,255,.6));
+  transition: transform .3s ease;
+}
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.tilt:hover .card-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+.card-title{
+  font-family:'Chakra Petch',sans-serif; font-size:1.15rem; font-weight:700;
+  letter-spacing:.03em; color:var(--frost); margin-bottom:8px;
+}
+.card-role{font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ice); margin-bottom:16px;}
+.card-desc{font-size:.9rem; line-height:1.8; color:var(--muted); font-weight:300;}
+.card-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+.tag{
+  font-size:.62rem; letter-spacing:.14em; text-transform:uppercase;
+  padding:5px 10px; border:1px solid rgba(111,227,255,.22); border-radius:99px;
+  color:rgba(217,246,255,.72);
+}
+@media(max-width:900px){ .cards{grid-template-columns:1fr;} }
+
+/* SKILLS */
+.skills-wrap{display:grid; grid-template-columns:1fr 1fr; gap:36px 56px;}
+.skill{opacity:0; transform:translateY(24px); transition:.8s cubic-bezier(.2,.8,.2,1);}
+.skill.in{opacity:1; transform:none;}
+.skill-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;}
+.skill-name{font-size:.86rem; letter-spacing:.1em; text-transform:uppercase; color:var(--frost);}
+.skill-val{font-family:'Chakra Petch',sans-serif; font-size:.8rem; color:var(--ice);}
+.bar{height:4px; background:rgba(111,227,255,.10); border-radius:99px; overflow:hidden;}
+.bar i{
+  display:block; height:100%; width:0; border-radius:99px;
+  background:linear-gradient(90deg,var(--ice2),var(--ice));
+  box-shadow:0 0 16px rgba(111,227,255,.8);
+  transition:width 1.5s cubic-bezier(.2,.8,.2,1);
+}
+.skill.in .bar i{width:var(--lv);}
+@media(max-width:760px){ .skills-wrap{grid-template-columns:1fr;} }
+
+/* CONTACT */
+.contact{text-align:center;}
+.contact h2{
+  font-family:'Chakra Petch',sans-serif; font-weight:700;
+  font-size:clamp(1.9rem,6vw,3.4rem); line-height:1.15; color:var(--frost);
+  margin-bottom:18px;
+}
+.contact h2 span{
+  color:transparent; background:linear-gradient(90deg,var(--ice),var(--ice2));
+  -webkit-background-clip:text; background-clip:text;
+  filter:drop-shadow(0 0 22px rgba(111,227,255,.5));
+}
+.contact p{color:var(--muted); max-width:520px; margin:0 auto 44px; line-height:1.85; font-weight:300;}
+.socials{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+.social{
+  display:flex; align-items:center; gap:10px; text-decoration:none;
+  padding:14px 26px; border:1px solid var(--line); border-radius:3px;
+  color:var(--frost); font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+  font-family:'Chakra Petch',sans-serif;
+  transition:border-color .3s, color .3s, box-shadow .3s, background .3s, transform .3s;
+}
+.social:hover{
+  border-color:var(--ice); color:var(--ice); transform:translateY(-3px);
+  box-shadow:0 0 28px rgba(111,227,255,.28), 0 0 28px rgba(111,227,255,.12) inset;
+  background:rgba(111,227,255,.05);
+}
+.social .dot{width:6px; height:6px; border-radius:50%; background:var(--ice); box-shadow:0 0 10px var(--ice);}
+
+/* FOOTER */
+footer{
+  position:relative; z-index:2; border-top:1px solid var(--line);
+  padding:34px 24px; text-align:center;
+  font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(125,138,165,.7);
+}
+footer b{color:var(--ice); font-weight:600;}
+</style>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div id="loader">
+  <div>
+    <div class="loader-name">FROSTALLION</div>
+    <div class="loader-bar"><i></i></div>
+  </div>
+</div>
+
+<!-- ============ FX LAYERS ============ -->
+<canvas id="bg"></canvas>
+<div class="glow" id="glow"></div>
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-reticle" id="cursorReticle">
+  <!-- Gaming Crosshair SVG -->
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+  </svg>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a href="#hero" class="logo">FROST<span>YY</span></a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#games">Games</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div>
+      <p class="eyebrow reveal">Frosty Gaming Portfolio</p>
+      <h1 class="glitch reveal" data-text="FROSTALLION" style="--d:.1s">FROSTALLION</h1>
+      <p class="nick reveal" style="--d:.2s">aka <span>frostyy</span></p>
+      <p class="type-line reveal" style="--d:.3s"><span id="typed"></span><span class="caret"></span></p>
+      <div class="hero-btns reveal" style="--d:.4s">
+        <a href="#games" class="btn btn-primary magnetic">Explore My Games</a>
+        <a href="#contact" class="btn btn-ghost magnetic">Play With Me</a>
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>PHASMOPHOBIA</span><span>✦</span><span>MINECRAFT PVP</span><span>✦</span>
+      <span>FREE FIRE INDIA</span><span>✦</span><span>HORROR SURVIVOR</span><span>✦</span>
+      <span>FROSTYY</span><span>✦</span>
+      <span>PHASMOPHOBIA</span><span>✦</span><span>MINECRAFT PVP</span><span>✦</span>
+      <span>FREE FIRE INDIA</span><span>✦</span><span>HORROR SURVIVOR</span><span>✦</span>
+      <span>FROSTYY</span><span>✦</span>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="block" id="about">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <h2>Who is Frostyy?</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="reveal">I'm <strong>Frostallion</strong> — but everyone calls me <em>frostyy</em>. I live in the dark corners of <strong>Phasmophobia</strong>, hunt ghosts until my hands shake, then switch to <strong>Minecraft PvP</strong> and click faster than my heart rate.</p>
+        <p class="reveal" style="--d:.1s">Seven years deep in <strong>Free Fire India</strong>. I've seen every meta, survived every nerf, and I still clutch when the squad is down. Reflexes built on lag, panic, and pure stubbornness.</p>
+        <p class="reveal" style="--d:.2s">I don't play to pass time. I play to <em>leave a mark</em> — one clean flick, one perfect ghost read, one duel nobody expected me to win.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat reveal"><span class="stat-num" data-count="7" data-suffix="+">0</span><span class="stat-label">Years · Free Fire</span></div>
+        <div class="stat reveal" style="--d:.08s"><span class="stat-num" data-count="1500" data-suffix="+">0</span><span class="stat-label">PvP Duels</span></div>
+        <div class="stat reveal" style="--d:.16s"><span class="stat-num" data-count="500" data-suffix="+">0</span><span class="stat-label">Ghost Hunts</span></div>
+        <div class="stat reveal" style="--d:.24s"><span class="stat-num" data-count="99" data-suffix="%">0</span><span class="stat-label">Nerve Under Fear</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GAMES ============ -->
+  <section class="block" id="games">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <h2>My Battlefields</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="cards">
+      <article class="tilt reveal">
+        <span class="card-idx">/ 01</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 10h.01M15 10h.01M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Phasmophobia</h3>
+        <p class="card-role">Paranormal Investigator</p>
+        <p class="card-desc">Sanity is a resource. I read the room, track the hunt timing, and call the ghost type before the van even asks. Fear is just a stat I've learned to manage.</p>
+        <div class="card-tags"><span class="tag">Ghost Reading</span><span class="tag">Team Comms</span><span class="tag">Nightmare Mode</span></div>
+      </article>
+      
+      <article class="tilt reveal" style="--d:.1s">
+        <span class="card-idx">/ 02</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Minecraft PvP</h3>
+        <p class="card-role">Duelist · Sword &amp; Bridge</p>
+        <p class="card-desc">Strafe, sprint-reset, crit-chain. I fight in the air more than on the ground. Give me a sword, a rod, and an island — the rest is a highlight reel.</p>
+        <div class="card-tags"><span class="tag">1.8 Combat</span><span class="tag">Bridge Fights</span><span class="tag">Clutch</span></div>
+      </article>
+      
+      <article class="tilt reveal" style="--d:.2s">
+        <span class="card-idx">/ 03</span>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="2" x2="12" y2="6"/>
+            <line x1="12" y1="18" x2="12" y2="22"/>
+            <line x1="2" y1="12" x2="6" y2="12"/>
+            <line x1="18" y1="12" x2="22" y2="12"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Free Fire India</h3>
+        <p class="card-role">7-Year Veteran</p>
+        <p class="card-desc">Seven seasons of meta shifts, nerfs and comebacks. Rush, hold, rotate — I play the fight three steps before it happens. Gloo walls are a lifestyle.</p>
+        <div class="card-tags"><span class="tag">Rusher</span><span class="tag">Aim Reflex</span><span class="tag">IGL</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="block" id="skills">
+    <div class="sec-head reveal">
+      <span class="sec-num">03</span>
+      <h2>Stat Sheet</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="skills-wrap">
+      <div class="skill" style="--lv:95%">
+        <div class="skill-top"><span class="skill-name">Free Fire — Aim &amp; Reflex</span><span class="skill-val">95%</span></div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="skill" style="--lv:92%">
+        <div class="skill-top"><span class="skill-name">Minecraft — Sword PvP</span><span class="skill-val">92%</span></div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="skill" style="--lv:88%">
+        <div class="skill-top"><span class="skill-name">Movement &amp; Bridging</span><span class="skill-val">88%</span></div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="skill" style="--lv:90%">
+        <div class="skill-top"><span class="skill-name">Phasmophobia — Investigation</span><span class="skill-val">90%</span></div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="skill" style="--lv:93%">
+        <div class="skill-top"><span class="skill-name">Clutch Under Pressure</span><span class="skill-val">93%</span></div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="skill" style="--lv:87%">
+        <div class="skill-top"><span class="skill-name">Squad Comms &amp; IGL</span><span class="skill-val">87%</span></div>
+        <div class="bar"><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="block contact" id="contact">
+    <div class="reveal">
+      <h2>Got a squad slot<br><span>for frostyy?</span></h2>
+      <p>Duels, hunts, or ranked pushes — if you can keep up, send the invite. I'm usually online when the lights go out.</p>
+    </div>
+    <div class="socials reveal" style="--d:.15s">
+      <a class="social magnetic" href="https://discord.com/users/1151404603544436827" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
+      
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> <b>FROSTALLION</b> · aka frostyy · Built in the dark ❄</footer>
+
+<script>
+/* ============================================================
+   1. CANVAS — frost particles + crystal links + mouse repel
+   ============================================================ */
+(function(){
+  const cvs = document.getElementById('bg');
+  const ctx = cvs.getContext('2d');
+  let W = 0, H = 0, DPR = 1;
+  const parts = [];
+  const MOUSE = { x: -9999, y: -9999 };
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cvs.width = W * DPR; cvs.height = H * DPR;
+    cvs.style.width = W + 'px'; cvs.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+    const count = Math.min(110, Math.max(40, Math.floor((W * H) / 15000)));
+    parts.length = 0;
+    for (let i = 0; i < count; i++){
+      parts.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.7 + 0.6,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28 - 0.06,
+        a: Math.random() * 0.5 + 0.22
+      });
+    }
+  }
+
+  const LINK = 125, LINK2 = LINK * LINK;
+
+  function frame(){
+    ctx.clearRect(0, 0, W, H);
+
+    for (let i = 0; i < parts.length; i++){
+      const p = parts[i];
+      const dx = p.x - MOUSE.x, dy = p.y - MOUSE.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < 20000 && d2 > 1){
+        const d = Math.sqrt(d2);
+        const force = (1 - d / 141) * 2.4;
+        p.x += (dx / d) * force;
+        p.y += (dy / d) * force;
+      }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -30) p.x = W + 30;
+      if (p.x > W + 30) p.x = -30;
+      if (p.y < -30) p.y = H + 30;
+      if (p.y > H + 30) p.y = -30;
+    }
+
+    ctx.lineWidth = 1;
+    for (let i = 0; i < parts.length; i++){
+      for (let j = i + 1; j < parts.length; j++){
+        const a = parts[i], b = parts[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < LINK2){
+          const o = (1 - d2 / LINK2) * 0.17;
+          ctx.strokeStyle = 'rgba(111,227,255,' + o.toFixed(3) + ')';
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = 'rgba(111,227,255,.85)';
+    for (let i = 0; i < parts.length; i++){
+      const p = parts[i];
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(198,244,255,' + p.a.toFixed(3) + ')';
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', function(e){ MOUSE.x = e.clientX; MOUSE.y = e.clientY; });
+  window.addEventListener('mouseout', function(){ MOUSE.x = -9999; MOUSE.y = -9999; });
+
+  resize();
+  frame();
+})();
+
+/* ============================================================
+   2. CUSTOM GAMING CROSSHAIR (No Lag)
+   ============================================================ */
+(function(){
+  const fine = window.matchMedia('(pointer:fine)').matches;
+  if (!fine) return;
+
+  const dot    = document.getElementById('cursorDot');
+  const reticle = document.getElementById('cursorReticle');
+  const glow   = document.getElementById('glow');
+
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let gx = mx, gy = my;
+  let lastSpark = 0;
+
+  document.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+
+    // Instant snappy movement for the crosshair (NO DELAY)
+    dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0) translate(-50%,-50%)';
+    reticle.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0) translate(-50%,-50%)';
+
+    // Hover detection
+    const target = e.target.closest('a, button, .tilt, .magnetic, .social');
+    reticle.classList.toggle('hover', !!target);
+    dot.classList.toggle('hover', !!target);
+
+    // Spark trail
+    const now = performance.now();
+    if (now - lastSpark > 45){
+      lastSpark = now;
+      const s = document.createElement('div');
+      const size = Math.random() * 4 + 2;
+      s.className = 'spark';
+      s.style.left = (mx + (Math.random() - 0.5) * 20) + 'px';
+      s.style.top  = (my + (Math.random() - 0.5) * 20) + 'px';
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.opacity = (Math.random() * 0.6 + 0.4).toFixed(2);
+      document.body.appendChild(s);
+      s.addEventListener('animationend', function(){ s.remove(); });
+    }
+  });
+
+  // Ambient slow glow follow
+  (function loop(){
+    gx += (mx - gx) * 0.07;
+    gy += (my - gy) * 0.07;
+    glow.style.transform = 'translate3d(' + gx + 'px,' + gy + 'px,0)';
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ============================================================
+   3. LOADER
+   ============================================================ */
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    document.getElementById('loader').classList.add('done');
+    startTyping();
+  }, 1450);
+});
+
+/* ============================================================
+   4. TYPING EFFECT
+   ============================================================ */
+let typingStarted = false;
+function startTyping(){
+  if (typingStarted) return;
+  typingStarted = true;
+
+  const el = document.getElementById('typed');
+  const lines = [
+    'Horror game survivor.',
+    'Minecraft PvP duelist.',
+    '7-year Free Fire veteran.',
+    'The last one standing in the fog.'
+  ];
+  let li = 0, ci = 0, deleting = false;
+
+  function tick(){
+    const cur = lines[li];
+    if (!deleting){
+      ci++;
+      el.textContent = cur.slice(0, ci);
+      if (ci === cur.length){
+        deleting = true;
+        return setTimeout(tick, 1700);
+      }
+      setTimeout(tick, 55);
+    } else {
+      ci--;
+      el.textContent = cur.slice(0, ci);
+      if (ci === 0){
+        deleting = false;
+        li = (li + 1) % lines.length;
+        return setTimeout(tick, 350);
+      }
+      setTimeout(tick, 26);
+    }
+  }
+  tick();
+}
+
+/* ============================================================
+   5. SCROLL REVEAL
+   ============================================================ */
+(function(){
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal, .skill').forEach(function(el){ io.observe(el); });
+})();
+
+/* ============================================================
+   6. NUMBER COUNTERS
+   ============================================================ */
+(function(){
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      const target = parseInt(el.dataset.count, 10) || 0;
+      const suffix = el.dataset.suffix || '';
+      const dur = 1600;
+      const t0 = performance.now();
+
+      function step(t){
+        const p = Math.min((t - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(target * eased) + (p === 1 ? suffix : '');
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('.stat-num').forEach(function(el){ io.observe(el); });
+})();
+
+/* ============================================================
+   7. 3D TILT CARDS
+   ============================================================ */
+(function(){
+  if (!window.matchMedia('(pointer:fine)').matches) return;
+
+  document.querySelectorAll('.tilt').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width  - 0.5;
+      const py = (e.clientY - r.top)  / r.height - 0.5;
+
+      card.style.transform =
+        'perspective(900px) rotateY(' + (px * 11).toFixed(2) + 'deg) ' +
+        'rotateX(' + (-py * 11).toFixed(2) + 'deg) translateY(-6px)';
+
+      card.style.setProperty('--mx', ((px + 0.5) * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', ((py + 0.5) * 100).toFixed(1) + '%');
+    });
+
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = '';
+    });
+  });
+})();
+
+/* ============================================================
+   8. MAGNETIC BUTTONS
+   ============================================================ */
+(function(){
+  if (!window.matchMedia('(pointer:fine)').matches) return;
+
+  document.querySelectorAll('.magnetic').forEach(function(el){
+    el.addEventListener('mousemove', function(e){
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top  - r.height / 2;
+      el.style.transform = 'translate(' + (x * 0.22) + 'px,' + (y * 0.32) + 'px)';
+    });
+    el.addEventListener('mouseleave', function(){
+      el.style.transform = '';
+    });
+  });
+})();
+
+/* ============================================================
+   9. SCROLL PROGRESS + NAV STATE
+   ============================================================ */
+(function(){
+  const bar = document.getElementById('progress');
+  const nav = document.getElementById('nav');
+
+  function onScroll(){
+    const st = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (st / max) * 100 : 0) + '%';
+    nav.classList.toggle('scrolled', st > 40);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ============================================================
+   10. MISC
+   ============================================================ */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
